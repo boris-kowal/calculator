@@ -51,20 +51,33 @@ btnDivide.addEventListener('click', (e) => {storeOperator(e);})
 const btnClear = document.querySelector('#clear');
 
 const btnDelete = document.querySelector('#delete');
-let value =[];
+let value =["",""];
 let operator;
+let firstNumber = true;
+let switchop = false;
 
 function display(e) {
     const result = document.querySelector('#result');
-    result.textContent = e.target.value;
-    if (!value[0]) {value[0] = e.target.value;}
-    else {value[1] = e.target.value;}
+    if (switchop) {result.textContent = ""}
+    result.textContent += e.target.value;
+    if (firstNumber) {value[0] += e.target.value;}
+    else {value[1] += e.target.value;}
 }
 function storeOperator(e) {
-    if (!value[1]) {operator = e.target.value;
+    const result = document.querySelector('#result');
+    if (value[1]=="") {
+        operator = e.target.value;
+        result.textContent = "";
+        firstNumber = false;
     } else {
-        value.splice(0, 1, equal());
-        operator = e.target.value;}
+        let equ = equal();
+        value.splice(0, 1, equ);
+        operator = e.target.value;
+        result.textContent = equ;
+        firstNumber = false;
+        value[1] = "0";
+        switchop = true;
+    }
 }
 function equal() {
     const result = document.querySelector('#result');
