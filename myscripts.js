@@ -38,6 +38,7 @@ btn9.addEventListener('click', (e) => {display(e);})
 const btn0 = document.querySelector('#n0');
 btn0.addEventListener('click', (e) => {display(e);})
 const btnPoint = document.querySelector('#point');
+btnPoint.addEventListener('click', (e) => {display(e);})
 const btnEqual = document.querySelector('#equal');
 btnEqual.addEventListener('click', equal);
 const btnTime = document.querySelector('#time');
@@ -49,6 +50,7 @@ btnMinus.addEventListener('click', (e) => {storeOperator(e);})
 const btnDivide = document.querySelector('#divide');
 btnDivide.addEventListener('click', (e) => {storeOperator(e);})
 const btnClear = document.querySelector('#clear');
+btnClear.addEventListener('click', (e) => {clear(e);})
 
 const btnDelete = document.querySelector('#delete');
 let value =["",""];
@@ -56,8 +58,12 @@ let operator;
 let firstNumber = true;
 let switchop = false;
 
+
 function display(e) {
     const result = document.querySelector('#result');
+    if (e.target.value == ".") {
+        if (result.textContent.indexOf(".") != -1) return;
+    }
     if (switchop) {result.textContent = ""}
     result.textContent += e.target.value;
     if (firstNumber) {value[0] += e.target.value;}
@@ -81,7 +87,16 @@ function storeOperator(e) {
 }
 function equal() {
     const result = document.querySelector('#result');
-    let equal = operate(operator, parseInt(value[0]), parseInt(value[1]));
+    let equal = operate(operator, parseFloat(value[0]), parseFloat(value[1]));
     result.textContent = equal;
     return equal
+}
+function clear() {
+    value = ["",""];
+    operator = undefined;
+    firstNumber = true;
+    switchop = false;
+    const result = document.querySelector('#result');
+    result.textContent = "";
+
 }
