@@ -53,6 +53,27 @@ const btnClear = document.querySelector('#clear');
 btnClear.addEventListener('click', (e) => {clear(e);})
 const btnDelete = document.querySelector('#delete');
 btnDelete.addEventListener('click', (e) => {del(e);})
+
+window.addEventListener('keydown', (e) => {
+    if (e.key == '0') {btn0.click()}
+    if (e.key == '1') {btn1.click()}
+    if (e.key == '2') {btn2.click()}
+    if (e.key == '3') {btn3.click()}
+    if (e.key == '4') {btn4.click()}
+    if (e.key == '5') {btn5.click()}
+    if (e.key == '6') {btn6.click()}
+    if (e.key == '7') {btn7.click()}
+    if (e.key == '8') {btn8.click()}
+    if (e.key == '9') {btn9.click()}
+    if (e.key == '.') {btnPoint.click()}
+    if (e.key == 'Enter') {btnEqual.click()}
+    if (e.key == '+') {btnPlus.click()}
+    if (e.key == '-') {btnMinus.click()}
+    if (e.key == '*') {btnTime.click()}
+    if (e.key == '/') {btnDivide.click()}
+    if (e.key == 'Backspace') {btnDelete.click()}
+    if (e.key == 'Escape') {btnClear.click()}
+})
 let value =["",""];
 let operator;
 let firstNumber = true;
@@ -75,6 +96,7 @@ function display(e) {
         if (result.textContent.indexOf(".") != -1) return;
     }
     if (switchop) {result.textContent = ""}
+    switchop = false;
     result.textContent += e.target.value;
     if (firstNumber) {value[0] += e.target.value;}
     else {value[1] += e.target.value;}
@@ -83,8 +105,8 @@ function storeOperator(e) {
     const result = document.querySelector('#result');
     if (value[1]=="") {
         operator = e.target.value;
-        result.textContent = "";
         firstNumber = false;
+        switchop = true;
     } else {
         let equ = equal();
         value.splice(0, 1, equ);
