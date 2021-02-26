@@ -51,14 +51,24 @@ const btnDivide = document.querySelector('#divide');
 btnDivide.addEventListener('click', (e) => {storeOperator(e);})
 const btnClear = document.querySelector('#clear');
 btnClear.addEventListener('click', (e) => {clear(e);})
-
 const btnDelete = document.querySelector('#delete');
+btnDelete.addEventListener('click', (e) => {del(e);})
 let value =["",""];
 let operator;
 let firstNumber = true;
 let switchop = false;
 
-
+function del(e) {
+    const result = document.querySelector('#result');
+    if (firstNumber) {
+        value[0] = value[0].slice(0,-1);
+        result.textContent = result.textContent.slice(0,-1);
+    }
+    else {
+        value[1] = value[1].slice(0,-1);
+        result.textContent = result.textContent.slice(0,-1);
+    }
+}
 function display(e) {
     const result = document.querySelector('#result');
     if (e.target.value == ".") {
