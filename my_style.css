@@ -1,0 +1,74 @@
+body, html {
+    height: 100%;
+}
+#outerFrame {
+    width: 400px;
+    height:600px;
+    border-style: solid;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 5px;
+    grid-template-areas: 
+    "result result result result "
+    ". clear . delete"
+    "n7 n8 n9 divide"
+    "n4 n5 n6 time"
+    "n1 n2 n3 minus"
+    "point n0 equal plus";
+}
+.element {
+    border-style: solid;
+    border-width: 1px;
+}
+#result {
+    grid-area: result;
+}
+#n1 {
+    grid-area: n1;
+}
+#n2 {
+    grid-area: n2;
+}
+#n3 {
+    grid-area: n3;
+}
+#n4 {
+    grid-area: n4;
+}
+#n5 {
+    grid-area: n5;
+}
+#n6 {
+    grid-area: n6;
+}
+#n7 {
+    grid-area: n7;
+}
+#n8 {
+    grid-area: n8;
+}
+#n9 {
+    grid-area: n9;
+}
+#n0 {
+    grid-area: n0;
+}
+#point {
+    grid-area: point;
+}
+#equal {
+    grid-area: equal;
+}
+#plus {
+    grid-area: plus;
+}
+#minus {
+    grid-area: minus;
+}
+#time {
+    grid-area: time;
+}
+#divide {
+    grid-area: divide;
+}
