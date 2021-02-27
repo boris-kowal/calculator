@@ -8,7 +8,7 @@ function multiply(a, b) {
   return a * b;
 }
 function divide(a, b) {  
-    if (b == 0) {return "dividing by 0 is not possible"}
+    if (b == 0) {return "dividing by 0 is not possible";}
     return (a / b).toFixed(2);
 }
 function operate(operator, a, b) {
